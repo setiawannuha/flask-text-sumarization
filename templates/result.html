@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Result</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body>
+  <nav class="navbar bg-white shadow">
+    <div class="container-fluid">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="btn btn-danger my-2 d-flex justify-content-center align-items-center" href="/">
+            <img src="../static/arrow-left.svg" style="height: 24px;" alt="" srcset=""/>
+            <span class="ms-2">BACK TO HOME</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container-fluid mt-4">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card card-body mb-4 shadow sticky-top">
+          <h5>Raw Article</h5>
+          <hr>
+          <p>{{result.article}}</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card card-body mb-4 shadow">
+          <h5>Keywords Extraction - Yake</h5>
+          <hr>
+          {% if result.yake == "-" %}
+            <p>-</p>
+          {% else %}
+            <div class="text-wrap">
+              {% for item in result.yake %}
+                <span class="d-inline-block rounded-5 bg-warning-subtle text-sm py-1 px-3 my-1">{{item}}</span>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+        <div class="card card-body mb-4 shadow">
+          <h5>Keywords Extraction - Rake</h5>
+          <hr>
+          {% if result.rake == "-" %}
+            <p>-</p>
+          {% else %}
+            <div class="text-wrap">
+              {% for item in result.rake %}
+                <span class="d-inline-block rounded-5 bg-info-subtle text-sm py-1 px-3 my-1">{{item}}</span>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+        <div class="card card-body mb-4 shadow">
+          <h5>Keywords Extraction - Multi Rake</h5>
+          <hr>
+          {% if result.multi_rake == "-" %}
+            <p>-</p>
+          {% else %}
+            <div class="text-wrap">
+              {% for item in result.multi_rake %}
+                <span class="d-inline-block rounded-5 bg-success-subtle text-sm py-1 px-3 my-1">{{item}}</span>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+        <div class="card card-body mb-4 shadow">
+          <h5>Keywords Extraction - KeyBERT</h5>
+          <hr>
+          {% if result.keybert == "-" %}
+            <p>-</p>
+          {% else %}
+            <div class="text-wrap">
+              {% for item in result.keybert %}
+                <span class="d-inline-block rounded-5 bg-primary-subtle text-sm py-1 px-3 my-1">{{item}}</span>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+        <div class="card card-body mb-4 shadow">
+          <h5>Keywords Extraction - Kex</h5>
+          <hr>
+          {% if result.kex == "-" %}
+            <p>-</p>
+          {% else %}
+            <div class="text-wrap">
+              {% for item in result.kex %}
+                <span class="d-inline-block rounded-5 bg-danger-subtle text-sm py-1 px-3 my-1">{{item}}</span>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card card-body mb-4 shadow">
+          <h5>Summarization - Text Rank</h5>
+          <hr>
+          {% if result.summary_text_rank == "-" %}
+            <p>-</p>
+          {% else %}
+            <div class="text-wrap">
+              {{result.summary_text_rank}}
+            </div>
+          {% endif %}
+        </div>
+        <div class="card card-body mb-4 shadow">
+          <h5>Summarization - Lex Rank</h5>
+          <hr>
+          {% if result.summary_lex_rank == "-" %}
+            <p>-</p>
+          {% else %}
+            <div class="text-wrap">
+              {{result.summary_lex_rank}}
+            </div>
+          {% endif %}
+        </div>
+        <div class="card card-body mb-4 shadow">
+          <h5>Summarization - LSA</h5>
+          <hr>
+          {% if result.summary_lsa == "-" %}
+            <p>-</p>
+          {% else %}
+            <div class="text-wrap">
+              {{result.summary_lsa}}
+            </div>
+          {% endif %}
+        </div>
+        <div class="card card-body mb-4 shadow">
+          <h5>Summarization - KL</h5>
+          <hr>
+          {% if result.summary_kl == "-" %}
+            <p>-</p>
+          {% else %}
+            <div class="text-wrap">
+              {{result.summary_kl}}
+            </div>
+          {% endif %}
+        </div>
+        <div class="card card-body mb-4 shadow">
+          <h5>Summarization - Luhn</h5>
+          <hr>
+          {% if result.summary_luhn == "-" %}
+            <p>-</p>
+          {% else %}
+            <div class="text-wrap">
+              {{result.summary_luhn}}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
