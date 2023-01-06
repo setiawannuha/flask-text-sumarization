@@ -71,9 +71,38 @@ def generate():
     "summary_text_rank": text_rank_summarization_output,
     "summary_kl": kl_summarization_output,
     "summary_luhn": luhn_summarization_output,
-    "biodata": {
-      "name": "Setiawan Restu Aji",
-      "nim": "119203008",
-    }
   }
   return render_template("result.html", result = response)
+
+@app.route("/with-files")
+def with_files():
+  article = open("./assets/news1.txt", 'r').read()
+  # article = open("./assets/news2.txt", 'r').read()
+  # article = open("./assets/news3.txt", 'r').read()
+  # article = open("./assets/news4.txt", 'r').read()
+  # article = open("./assets/news5.txt", 'r').read()
+  rake_output = rake_extraction(article)
+  yake_output = yake_extraction(article)
+  multi_rake_output = multi_rake_extraction(article)
+  keybert_output = keybert_extraction(article)
+  kex_output = kex_extraction(article)
+  lex_rank_summarization_output = lex_rank_summarization(article)
+  lsa_summarization_output = lsa_summarization(article)
+  text_rank_summarization_output = text_rank_summarization(article)
+  kl_summarization_output = kl_summarization(article)
+  luhn_summarization_output = luhn_summarization(article)
+  response = {
+    "article": article,
+    "rake": rake_output,
+    "yake": yake_output,
+    "multi_rake": multi_rake_output,
+    "keybert": keybert_output,
+    "kex": kex_output,
+    "summary_lex_rank": lex_rank_summarization_output,
+    "summary_lsa": lsa_summarization_output,
+    "summary_text_rank": text_rank_summarization_output,
+    "summary_kl": kl_summarization_output,
+    "summary_luhn": luhn_summarization_output,
+  }
+  return render_template("result.html", result = response)
+  return "OK"
